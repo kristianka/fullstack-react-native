@@ -1,0 +1,42 @@
+import React from "react";
+import { View, StyleSheet, Pressable } from "react-native";
+import Constants from "expo-constants";
+import { Link } from "react-router-native";
+import Text from "./Text";
+
+const styles = StyleSheet.create({
+    container: {
+        paddingTop: Constants.statusBarHeight,
+        backgroundColor: "#24292e",
+        flexDirection: 'row'
+    },
+    tab: {
+        padding: 16,
+    },
+    text: {
+        color: "white",
+        fontWeight: "bold",
+        fontSize: 18,
+    },
+});
+
+const AppBarTab = ({ text, to }) => {
+    return (
+        <Pressable style={styles.tab}>
+            <Link to={to} style={styles.text}>
+                <Text style={styles.text}>{text}</Text>
+            </Link>
+        </Pressable>
+    );
+};
+
+const AppBar = () => {
+    return (
+        <View style={styles.container}>
+            <AppBarTab text="Repositories" to="/" />
+            <AppBarTab text="Sign in" to="/signin" />
+        </View>
+    );
+};
+
+export default AppBar;
