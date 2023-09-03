@@ -3,6 +3,7 @@ import { View, StyleSheet, Pressable } from "react-native";
 import Constants from "expo-constants";
 import { Link } from "react-router-native";
 import Text from "./Text";
+import useGetUser from "../hooks/useGetUser";
 
 const styles = StyleSheet.create({
     container: {
@@ -31,10 +32,16 @@ const AppBarTab = ({ text, to }) => {
 };
 
 const AppBar = () => {
+    const { data } = useGetUser();
+
     return (
         <View style={styles.container}>
             <AppBarTab text="Repositories" to="/" />
-            <AppBarTab text="Sign in" to="/signin" />
+            {data?.me ?
+                <AppBarTab text="Logout" to="/logout" />
+                :
+                <AppBarTab text="Sign in" to="/signin" />
+            }
         </View>
     );
 };

@@ -3,6 +3,7 @@ import RepositoryList from './RepositoryList';
 import AppBar from './AppBar';
 import { Route, Routes } from 'react-router-native';
 import SignIn from './SignIn';
+import Logout from './Logout';
 
 const styles = StyleSheet.create({
     container: {
@@ -19,6 +20,7 @@ const Main = () => {
                 <Routes>
                     <Route path="/" element={<RepositoryList />} exact />
                     <Route path="/signin" element={<SignIn />} exact />
+                    <Route path="/logout" element={<Logout />} />
                 </Routes>
             </ScrollView>
         </View>
