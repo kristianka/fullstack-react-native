@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
 
 const RepositoryInfo = ({ fullName, description, language }) => {
     return (
-        <View style={styles.container}>
+        <View testID="repositoryInfo" style={styles.container}>
             <Text fontWeight="bold" fontSize="subheading" style={styles.description}>
                 {fullName}
             </Text>

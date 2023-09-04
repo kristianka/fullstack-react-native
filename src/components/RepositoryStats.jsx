@@ -20,7 +20,7 @@ const formatCount = (count) => {
 const RepositoryStats = (props) => {
     const { stars, forks, reviews, rating } = props;
     return (
-        <View style={styles.countContainer}>
+        <View testID="repositoryStats" style={styles.countContainer}>
             <View>
                 <Text fontWeight="bold">{formatCount(stars)}</Text>
                 <Text>Stars</Text>
