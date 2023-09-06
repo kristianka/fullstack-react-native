@@ -1,7 +1,9 @@
-import React from "react";
-import { View, Image, StyleSheet } from "react-native";
+import React, { useState } from "react";
+import { View, Image, StyleSheet, Pressable } from "react-native";
 import RepositoryStats from "./RepositoryStats";
 import RepositoryInfo from "./RepositoryInfo";
+import { useNavigate } from "react-router-native";
+import Text from "./Text";
 
 const styles = StyleSheet.create({
     container: {
@@ -27,28 +29,43 @@ const styles = StyleSheet.create({
 });
 
 const RepositoryItem = (props) => {
+    const navigate = useNavigate();
+    const [show, setShow] = useState(false);
+
+    const { id, ownerAvatarUrl, fullName, description, language, stargazersCount, forksCount,
+        reviewCount, ratingAverage } = props.item;
+
+    const handlePress = () => {
+        setShow(!show);
+        navigate(`/${id}`)
+    };
+
     return (
-        <View testID="repositoryItem" style={styles.container}>
-            <View style={styles.avatarContainer}>
-                <Image
-                    style={styles.avatar}
-                    source={{ uri: props.item.ownerAvatarUrl }}
-                />
-            </View>
-            <View style={styles.textContainer}>
-                <RepositoryInfo
-                    fullName={props.item.fullName}
-                    description={props.item.description}
-                    language={props.item.language}
-                />
-                <RepositoryStats
-                    stars={props.item.stargazersCount}
-                    forks={props.item.forksCount}
-                    reviews={props.item.reviewCount}
-                    rating={props.item.ratingAverage}
-                />
-            </View>
-        </View>
+        <Pressable onPress={handlePress}>
+            {show ? <Text>Hello</Text> :
+                <View testID="repositoryItem" style={styles.container}>
+                    <View style={styles.avatarContainer}>
+                        <Image
+                            style={styles.avatar}
+                            source={{ uri: ownerAvatarUrl }}
+                        />
+                    </View>
+                    <View style={styles.textContainer}>
+                        <RepositoryInfo
+                            fullName={fullName}
+                            description={description}
+                            language={language}
+                        />
+                        <RepositoryStats
+                            stars={stargazersCount}
+                            forks={forksCount}
+                            reviews={reviewCount}
+                            rating={ratingAverage}
+                        />
+                    </View>
+                </View>}
+
+        </Pressable>
     );
 }
 

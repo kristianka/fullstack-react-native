@@ -15,31 +15,32 @@ const styles = StyleSheet.create({
         flex: 1,
         flexWrap: "wrap",
     },
-    languageContainer: {
+    ratingContainer: {
         backgroundColor: "#0366d6",
-        paddingHorizontal: 7,
-        paddingVertical: 3,
-        borderRadius: 7,
+        paddingHorizontal: 10,
+        paddingVertical: 10,
+        borderRadius: 15,
         alignSelf: "flex-start",
     },
-    languageText: {
+    rating: {
         color: "white",
         fontWeight: "bold",
     },
 });
 
-const RepositoryInfo = ({ fullName, description, language }) => {
+const ReviewInfo = ({ username, text, rating, date }) => {
     return (
-        <View testID="repositoryInfo" style={styles.container}>
-            <Text style={styles.title} fontWeight="bold" fontSize="heading" >
-                {fullName}
-            </Text>
-            <Text style={styles.description} fontWeight="subheading">{description}</Text>
-            <View style={styles.languageContainer}>
-                <Text style={styles.languageText}>{language}</Text>
+        <View testID="reviewInfo" style={styles.container}>
+            <View style={styles.ratingContainer}>
+                <Text style={styles.rating}>{rating}</Text>
             </View>
+            <Text style={styles.title} fontWeight="bold" fontSize="heading" >
+                {username}
+            </Text>
+            <Text style={styles.description} fontWeight="subheading">{date}</Text>
+            <Text style={styles.description} fontWeight="subheading">{text}</Text>
         </View>
     );
 };
 
-export default RepositoryInfo;
+export default ReviewInfo;

@@ -8,6 +8,7 @@ export const GET_REPOSITORIES = gql`
                 id
                 ownerAvatarUrl
                 name,
+                fullName,
                 description,
                 language,
                 stargazersCount
@@ -37,4 +38,35 @@ export const ME = gql`
     }
 `;
 
-// other queries...
+export const GET_REPOSITORY = gql`
+  query repository($id: ID!) {
+      repository(id: $id) {
+        id
+        ownerAvatarUrl
+        name,
+        description,
+        language,
+        stargazersCount
+        forksCount,
+        reviewCount,
+        ratingAverage,
+        url,
+        fullName,
+        reviews {
+            edges {
+              node {
+                id
+                text
+                rating
+                createdAt
+                user {
+                  id
+                  username
+                }
+              }
+            }
+          }      
+      }
+}
+`;
+
