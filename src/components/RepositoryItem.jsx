@@ -24,7 +24,8 @@ const styles = StyleSheet.create({
     },
     textContainer: {
         position: "relative",
-        flex: 1,
+        padding: 10,
+        width: "50%"
     },
 });
 

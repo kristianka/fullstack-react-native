@@ -70,3 +70,17 @@ export const GET_REPOSITORY = gql`
 }
 `;
 
+export const CREATE_REVIEW = gql`
+  mutation ($review: CreateReviewInput) {
+    createReview(review: $review) {
+      user {
+        username
+      }
+      repository {
+        name
+      }
+      rating,
+      text
+    }
+}`;
+

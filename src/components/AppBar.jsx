@@ -38,7 +38,10 @@ const AppBar = () => {
         <View style={styles.container}>
             <AppBarTab text="Repositories" to="/" />
             {data?.me ?
-                <AppBarTab text="Logout" to="/logout" />
+                <>
+                    <AppBarTab text="Create a review" to="/create-review" />
+                    <AppBarTab text="Logout" to="/logout" />
+                </>
                 :
                 <AppBarTab text="Sign in" to="/signin" />
             }
