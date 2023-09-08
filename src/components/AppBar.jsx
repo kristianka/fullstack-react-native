@@ -32,7 +32,7 @@ const AppBarTab = ({ text, to }) => {
 };
 
 const AppBar = () => {
-    const { data } = useGetUser();
+    const { data } = useGetUser({ includeReviews: false });
 
     return (
         <View style={styles.container}>
@@ -40,6 +40,7 @@ const AppBar = () => {
             {data?.me ?
                 <>
                     <AppBarTab text="Create a review" to="/create-review" />
+                    <AppBarTab text="My reviews" to="/my-reviews" />
                     <AppBarTab text="Logout" to="/logout" />
                 </>
                 :

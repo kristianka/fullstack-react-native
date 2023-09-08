@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-native";
 import useGetUser from "../hooks/useGetUser";
 
 const Logout = () => {
-    const { logout } = useGetUser();
+    const { logout } = useGetUser({ includeReviews: false });
     const navigate = useNavigate();
 
     const handleLogout = async () => {

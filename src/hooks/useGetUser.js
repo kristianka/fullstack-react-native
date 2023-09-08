@@ -1,17 +1,17 @@
-import { useApolloClient, useQuery } from '@apollo/client';
-import { ME } from '../graphql/queries';
-import useAuthStorage from './useAuthStorage';
+import { useApolloClient, useQuery } from "@apollo/client";
+import { CURRENT_USER } from "../graphql/queries";
+import useAuthStorage from "./useAuthStorage";
 
 
-const useGetUser = () => {
+const useGetUser = ({ includeReviews }) => {
     const authStorage = useAuthStorage();
     const apolloClient = useApolloClient();
-    const { data, loading, error } = useQuery(ME, {
-        fetchPolicy: 'cache-and-network',
+    const { data, loading, error } = useQuery(CURRENT_USER, {
+        variables: { includeReviews: includeReviews },
+        fetchPolicy: "cache-and-network",
     });
 
     const logout = async () => {
-        console.log('logging out');
         await authStorage.removeAccessToken();
         apolloClient.resetStore();
     };

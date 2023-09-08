@@ -28,9 +28,10 @@ const ReviewItem = ({ review }) => {
         <View testID="repositoryItem" style={styles.container}>
             <View style={styles.textContainer}>
                 <ReviewInfo
-                    username={review.user.username}
+                    repositoryName={review?.repository?.fullName}
+                    username={review?.user?.username}
                     date={formatDate(review.createdAt)}
-                    text={review.text}
+                    text={review?.text}
                     rating={review.rating}
                 />
             </View>

@@ -3,17 +3,23 @@ import { View, Text, StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
     container: {
-        marginBottom: 10,
-        flexShrink: 1
-    },
-    title: {
-        marginBottom: 5,
-        fontWeight: "bold",
-    },
-    description: {
-        marginBottom: 5,
-        flex: 1,
+        padding: 10,
+        backgroundColor: "white",
+        borderBottomWidth: 10,
+        borderColor: "lightgray",
         flexWrap: "wrap",
+        flexShrink: 1,
+    },
+    avatar: {
+        width: 50,
+        height: 50,
+        borderRadius: 10,
+        marginRight: 16,
+    },
+    textContainer: {
+        position: "relative",
+        padding: 10,
+        width: "50%"
     },
     ratingContainer: {
         backgroundColor: "#0366d6",
@@ -26,19 +32,30 @@ const styles = StyleSheet.create({
         color: "white",
         fontWeight: "bold",
     },
+    description: {
+        marginBottom: 5,
+        flex: 1,
+        flexWrap: "wrap",
+    },
+    title: {
+        marginBottom: 5,
+        fontWeight: "bold",
+    },
 });
 
-const ReviewInfo = ({ username, text, rating, date }) => {
+
+const ReviewInfo = ({ username, text, rating, date, repositoryName }) => {
     return (
         <View testID="reviewInfo" style={styles.container}>
             <View style={styles.ratingContainer}>
                 <Text style={styles.rating}>{rating}</Text>
             </View>
+            <Text style={styles.title} fontWeight="bold" fontSize="heading">{repositoryName}</Text>
             <Text style={styles.title} fontWeight="bold" fontSize="heading" >
                 {username}
             </Text>
-            <Text style={styles.description} fontWeight="subheading">{date}</Text>
-            <Text style={styles.description} fontWeight="subheading">{text}</Text>
+            <Text style={styles.description} fontSize="subheading">{date}</Text>
+            <Text style={styles.description} fontSize="subheading">{text}</Text>
         </View>
     );
 };

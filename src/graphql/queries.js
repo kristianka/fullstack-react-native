@@ -21,13 +21,28 @@ export const GET_REPOSITORIES = gql`
     }
 `;
 
-export const ME = gql`
-    query me {
-        me {
-            id
-            username
+export const CURRENT_USER = gql`
+    query currentUser($includeReviews: Boolean = false) {
+      me {
+        id,
+        username,
+        reviews @include(if: $includeReviews) {
+          edges {
+            node {
+              id,
+              createdAt,
+              rating,
+              text
+              repository {
+                id,
+                fullName,
+                ownerName
+              }
+            }
           }
-    }
+        }
+      }
+   }
 `;
 
 export const GET_REPOSITORY = gql`
@@ -59,5 +74,5 @@ export const GET_REPOSITORY = gql`
             }
           }      
       }
-}
+    }
 `;
