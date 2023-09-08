@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import { StyleSheet, View } from 'react-native';
-import FormikTextInput from './FormikTextInput';
+import FormikTextInput from '../FormikTextInput';
 import { Formik } from 'formik';
 import { Button } from 'react-native';
 import * as yup from 'yup';

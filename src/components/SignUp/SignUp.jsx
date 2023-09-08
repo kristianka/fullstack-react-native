@@ -1,10 +1,10 @@
 import { StyleSheet, View } from "react-native";
-import FormikTextInput from "./FormikTextInput";
+import FormikTextInput from "../FormikTextInput";
 import { Formik } from "formik";
 import { Button } from "react-native";
 import * as yup from "yup";
-import useSignIn from "../hooks/useSignIn";
-import useCreateUser from "../hooks/useCreateUser";
+import useSignIn from "../../hooks/useSignIn";
+import useCreateUser from "../../hooks/useCreateUser";
 import { useNavigate } from "react-router-native";
 
 const validationSchema = yup.object().shape({

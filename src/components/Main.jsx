@@ -1,12 +1,13 @@
-import { ScrollView, StyleSheet, View } from 'react-native';
-import RepositoryList from './RepositoryList';
-import AppBar from './AppBar';
-import { Route, Routes } from 'react-router-native';
-import SignIn from './SignIn';
-import Logout from './Logout';
-import Repository from './Repository';
-import CreateReview from './CreateReview';
-import SignUp from './SignUp';
+import { ScrollView, StyleSheet, View } from "react-native";
+import { Route, Routes } from "react-router-native";
+
+import RepositoryList from "./Repositories/RepositoryList";
+import AppBar from "./AppBar";
+import SignIn from "./SignIn/SignIn"
+import Logout from "./Logout";
+import Repository from "./Repositories/Repository";
+import CreateReview from "./Repositories/Reviews/CreateReview";
+import SignUp from "./SignUp/SignUp";
 
 const styles = StyleSheet.create({
     container: {

@@ -2,12 +2,12 @@ import React from "react";
 import { View, Image, StyleSheet, FlatList } from "react-native";
 import RepositoryStats from "./RepositoryStats";
 import RepositoryInfo from "./RepositoryInfo";
-import Text from "./Text";
-import useRepositoryInfo from "../hooks/useRepositoryInfo";
+import Text from "../Text";
+import useRepositoryInfo from "../../hooks/useRepositoryInfo";
 import { useParams } from "react-router-native";
 import { Button } from "react-native";
 import * as Linking from "expo-linking";
-import ReviewItem from "./Review";
+import ReviewItem from "./Reviews/Review";
 
 const styles = StyleSheet.create({
     container: {

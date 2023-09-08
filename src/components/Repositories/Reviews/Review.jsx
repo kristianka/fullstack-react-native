@@ -1,6 +1,6 @@
 import React from "react";
 import { View, StyleSheet, } from "react-native";
-import { formatDate } from "../utils/formatDate";
+import { formatDate } from "../../../utils/formatDate";
 import ReviewInfo from "./ReviewInfo";
 
 const styles = StyleSheet.create({

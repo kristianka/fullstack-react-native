@@ -3,7 +3,7 @@ import { View, Image, StyleSheet, Pressable } from "react-native";
 import RepositoryStats from "./RepositoryStats";
 import RepositoryInfo from "./RepositoryInfo";
 import { useNavigate } from "react-router-native";
-import Text from "./Text";
+import Text from "../Text";
 
 const styles = StyleSheet.create({
     container: {

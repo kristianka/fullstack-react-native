@@ -1,9 +1,9 @@
 import { FlatList, View, StyleSheet, SafeAreaView } from "react-native";
 import RepositoryItem from "./RepositoryItem";
-import useRepositories from '../hooks/useRepositories';
+import useRepositories from '../../hooks/useRepositories';
 import { useState } from "react";
 import { useDebounce } from "use-debounce";
-import SearchInput from "./SearchInput";
+import SearchInput from "../SearchInput";
 import FilterRepos from "./FilterRepos";
 
 const styles = StyleSheet.create({
