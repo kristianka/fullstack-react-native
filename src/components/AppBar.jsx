@@ -43,7 +43,10 @@ const AppBar = () => {
                     <AppBarTab text="Logout" to="/logout" />
                 </>
                 :
-                <AppBarTab text="Sign in" to="/signin" />
+                <>
+                    <AppBarTab text="Sign in" to="/signin" />
+                    <AppBarTab text="Sign up" to="/signup" />
+                </>
             }
         </View>
     );

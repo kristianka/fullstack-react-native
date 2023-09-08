@@ -21,14 +21,6 @@ export const GET_REPOSITORIES = gql`
     }
 `;
 
-export const SIGN_IN = gql`
-    mutation ($username: String!, $password: String!) {
-        authenticate(credentials: { username: $username, password: $password }) {
-          accessToken
-        }
-      }    
-`;
-
 export const ME = gql`
     query me {
         me {
@@ -69,18 +61,3 @@ export const GET_REPOSITORY = gql`
       }
 }
 `;
-
-export const CREATE_REVIEW = gql`
-  mutation ($review: CreateReviewInput) {
-    createReview(review: $review) {
-      user {
-        username
-      }
-      repository {
-        name
-      }
-      rating,
-      text
-    }
-}`;
-
