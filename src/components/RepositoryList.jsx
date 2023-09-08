@@ -1,8 +1,10 @@
 import { FlatList, View, StyleSheet, SafeAreaView } from "react-native";
 import RepositoryItem from "./RepositoryItem";
 import useRepositories from '../hooks/useRepositories';
-import { Picker } from '@react-native-picker/picker';
 import { useState } from "react";
+import { useDebounce } from "use-debounce";
+import SearchInput from "./SearchInput";
+import FilterRepos from "./FilterRepos";
 
 const styles = StyleSheet.create({
     separator: {
@@ -15,7 +17,10 @@ const ItemSeparator = () => <View style={styles.separator} />;
 const RepositoryList = () => {
     const [order, setOrder] = useState("CREATED_AT");
     const [orderDirection, setOrderDirection] = useState("DESC");
-    const { repositories, loading, error } = useRepositories({ orderBy: order, orderDirection });
+    const [searchKeyword, setSearchKeyword] = useState("");
+    const [debouncedSearchKeyword] = useDebounce(searchKeyword, 1000);
+
+    const { repositories, loading, error } = useRepositories({ orderBy: order, orderDirection, searchKeyword: debouncedSearchKeyword });
 
     const changeOrder = (value) => {
         const [newOrder, newOrderDirection] = value.split("-");
@@ -34,14 +39,8 @@ const RepositoryList = () => {
 
     return (
         <SafeAreaView>
-            <Picker
-                selectedValue={`${order}-${orderDirection}`}
-                onValueChange={(value) => changeOrder(value)}
-            >
-                <Picker.Item label="Latest repositories" value="CREATED_AT" />
-                <Picker.Item label="Highest rated repositories (DESC)" value="RATING_AVERAGE-DESC" />
-                <Picker.Item label="Lowest rated repositories (ASC)" value="RATING_AVERAGE-ASC" />
-            </Picker>
+            <SearchInput value={searchKeyword} onChangeText={setSearchKeyword} />
+            <FilterRepos value={`${order}-${orderDirection}`} onChange={changeOrder} />
             <FlatList
                 data={repositories}
                 ItemSeparatorComponent={ItemSeparator}
