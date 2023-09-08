@@ -1,9 +1,9 @@
 import { gql } from '@apollo/client';
 
 export const GET_REPOSITORIES = gql`
-    query getrepos {
-        repositories {
-        edges {
+  query getRepos($orderBy: AllRepositoriesOrderBy, $orderDirection: OrderDirection) {
+    repositories(orderBy: $orderBy, orderDirection: $orderDirection) {
+      edges {
             node {
                 id
                 ownerAvatarUrl
@@ -17,7 +17,7 @@ export const GET_REPOSITORIES = gql`
                 ratingAverage
             }
         }
-        }
+      }
     }
 `;
 
