@@ -12,12 +12,12 @@ const styles = StyleSheet.create({
         flexDirection: 'row'
     },
     tab: {
-        padding: 16,
+        padding: 10,
     },
     text: {
         color: "white",
         fontWeight: "bold",
-        fontSize: 18,
+        fontSize: 14,
     },
 });
 

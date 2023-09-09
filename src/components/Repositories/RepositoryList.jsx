@@ -20,7 +20,10 @@ const RepositoryList = () => {
     const [searchKeyword, setSearchKeyword] = useState("");
     const [debouncedSearchKeyword] = useDebounce(searchKeyword, 1000);
 
-    const { repositories, loading, error } = useRepositories({ orderBy: order, orderDirection, searchKeyword: debouncedSearchKeyword });
+    const { repositories, loading, error, fetchMore } = useRepositories({
+        first: 3,
+        orderBy: order, orderDirection, searchKeyword: debouncedSearchKeyword
+    });
 
     const changeOrder = (value) => {
         const [newOrder, newOrderDirection] = value.split("-");
@@ -37,6 +40,11 @@ const RepositoryList = () => {
         return null;
     }
 
+    const onEndReach = () => {
+        console.log('You have reached the end of the list');
+        fetchMore();
+    };
+
     return (
         <SafeAreaView>
             <SearchInput value={searchKeyword} onChangeText={setSearchKeyword} />
@@ -46,6 +54,8 @@ const RepositoryList = () => {
                 ItemSeparatorComponent={ItemSeparator}
                 renderItem={({ item }) => <RepositoryItem item={item} />}
                 keyExtractor={item => item.id}
+                onEndReached={onEndReach}
+                onEndReachedThreshold={0.5}
             />
         </SafeAreaView>
     );

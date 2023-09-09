@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
         backgroundColor: "white",
         flexWrap: "wrap",
         flexShrink: 1,
-        width: "20%"
+        width: "100%"
     },
     avatar: {
         width: 50,
@@ -41,18 +41,25 @@ const ItemSeparator = () => <View style={styles.separator} />;
 
 const Repository = () => {
     const { id } = useParams();
-    const { repository } = useRepositoryInfo(id)
-
+    const { data, fetchMore } = useRepositoryInfo({
+        first: 3,
+        id
+    })
+    const repository = data ? data.repository : undefined;
     if (!repository) {
         return <Text>Loading...</Text>;
     }
-    console.log(repository)
+
     const { url, ownerAvatarUrl, fullName, description, language, stargazersCount, forksCount,
         reviewCount, ratingAverage } = repository;
 
     const handleClick = () => {
         Linking.openURL(url);
     }
+
+    const onEndReach = () => {
+        fetchMore();
+    };
 
     return (
         <View>
@@ -87,6 +94,8 @@ const Repository = () => {
                 data={repository.reviews.edges}
                 renderItem={({ item }) => <ReviewItem review={item.node} />}
                 keyExtractor={(item) => item.node.id}
+                onEndReached={onEndReach}
+                onEndReachedThreshold={0.5}
             />
         </View>
     );

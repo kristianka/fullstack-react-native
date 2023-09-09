@@ -43,7 +43,7 @@ const RepositoryItem = (props) => {
 
     return (
         <Pressable onPress={handlePress}>
-            {show ? <Text>Hello</Text> :
+            {show ? <Text>Loading</Text> :
                 <View testID="repositoryItem" style={styles.container}>
                     <View style={styles.avatarContainer}>
                         <Image
