@@ -3,8 +3,7 @@ import Constants from 'expo-constants';
 import { setContext } from '@apollo/client/link/context';
 
 const httpLink = createHttpLink({
-    // Replace the IP address part with your own IP address!
-    uri: Constants.manifest.extra.APOLLO_URI
+    uri: Constants.expoConfig.extra.APOLLO_URI
 });
 
 const createApolloClient = (authStorage) => {

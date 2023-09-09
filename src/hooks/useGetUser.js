@@ -6,7 +6,7 @@ import useAuthStorage from "./useAuthStorage";
 const useGetUser = ({ includeReviews }) => {
     const authStorage = useAuthStorage();
     const apolloClient = useApolloClient();
-    const { data, loading, error } = useQuery(CURRENT_USER, {
+    const { data, loading, error, refetch } = useQuery(CURRENT_USER, {
         variables: { includeReviews: includeReviews },
         fetchPolicy: "cache-and-network",
     });
@@ -16,7 +16,7 @@ const useGetUser = ({ includeReviews }) => {
         apolloClient.resetStore();
     };
 
-    return { data, loading, error, logout };
+    return { data, loading, error, logout, refetch };
 };
 
 export default useGetUser;

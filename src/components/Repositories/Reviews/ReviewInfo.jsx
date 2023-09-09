@@ -1,14 +1,12 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
+import Buttons from "./Buttons";
 
 const styles = StyleSheet.create({
     container: {
         padding: 10,
         backgroundColor: "white",
-        borderBottomWidth: 10,
         borderColor: "lightgray",
-        flexWrap: "wrap",
-        flexShrink: 1,
     },
     avatar: {
         width: 50,
@@ -36,6 +34,7 @@ const styles = StyleSheet.create({
         marginBottom: 5,
         flex: 1,
         flexWrap: "wrap",
+        width: "25%"
     },
     title: {
         marginBottom: 5,
@@ -44,7 +43,7 @@ const styles = StyleSheet.create({
 });
 
 
-const ReviewInfo = ({ username, text, rating, date, repositoryName }) => {
+const ReviewInfo = ({ username, text, rating, date, repositoryName, reviewId, refetch }) => {
     return (
         <View testID="reviewInfo" style={styles.container}>
             <View style={styles.ratingContainer}>
@@ -56,6 +55,7 @@ const ReviewInfo = ({ username, text, rating, date, repositoryName }) => {
             </Text>
             <Text style={styles.description} fontSize="subheading">{date}</Text>
             <Text style={styles.description} fontSize="subheading">{text}</Text>
+            {repositoryName && <Buttons repositoryId={repositoryName} reviewId={reviewId} refetch={refetch} />}
         </View>
     );
 };

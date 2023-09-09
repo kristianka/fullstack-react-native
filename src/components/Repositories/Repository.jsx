@@ -17,6 +17,7 @@ const styles = StyleSheet.create({
         backgroundColor: "white",
         flexWrap: "wrap",
         flexShrink: 1,
+        width: "20%"
     },
     avatar: {
         width: 50,
@@ -27,10 +28,13 @@ const styles = StyleSheet.create({
     textContainer: {
         position: "relative",
         flex: 1,
+        width: "50%",
+        padding: 10,
     },
     separator: {
         height: 10,
     },
+
 });
 
 const ItemSeparator = () => <View style={styles.separator} />;
@@ -47,7 +51,6 @@ const Repository = () => {
         reviewCount, ratingAverage } = repository;
 
     const handleClick = () => {
-        console.log("clicked");
         Linking.openURL(url);
     }
 
@@ -74,6 +77,9 @@ const Repository = () => {
                     />
                     <Button title="Open in GitHub" onPress={handleClick}></Button>
                 </View>
+            </View>
+            <View>
+                <Text></Text>
             </View>
             <FlatList
                 key="reviews"

@@ -11,28 +11,33 @@ const styles = StyleSheet.create({
         backgroundColor: "white",
         flexWrap: "wrap",
         flexShrink: 1,
-        width: "30em",
+        width: "5em",
     },
     textContainer: {
         position: "relative",
         flex: 1,
+        width: "50%",
+        textOverflow: "ellipsis",
     },
     separator: {
         height: 10,
     }
 });
 
-const ReviewItem = ({ review }) => {
+
+const ReviewItem = ({ review, refetch }) => {
     if (!review) return null;
     return (
         <View testID="repositoryItem" style={styles.container}>
-            <View style={styles.textContainer}>
+            <View>
                 <ReviewInfo
                     repositoryName={review?.repository?.fullName}
                     username={review?.user?.username}
                     date={formatDate(review.createdAt)}
                     text={review?.text}
                     rating={review.rating}
+                    reviewId={review.id}
+                    refetch={refetch}
                 />
             </View>
         </View>

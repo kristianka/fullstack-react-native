@@ -2,15 +2,15 @@ import ReviewItem from "./Review";
 import useGetUser from "../../../hooks/useGetUser";
 import { FlatList } from "react-native";
 
+
 const MyReviews = () => {
-    const { data } = useGetUser({ includeReviews: true });
+    const { data, refetch } = useGetUser({ includeReviews: true });
     if (!data) return null;
-    console.log("my reviews data", data);
 
     return (
         <FlatList
             data={data?.me?.reviews?.edges.map(edge => edge.node)}
-            renderItem={({ item }) => <ReviewItem key={item.id} review={item} />}
+            renderItem={({ item }) => <ReviewItem key={item.id} review={item} refetch={refetch} />}
             keyExtractor={item => item.id}
         />
     )
