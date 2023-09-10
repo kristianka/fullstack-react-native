@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react-native';
-import RepositoryList from '../../components/RepositoryListContainer';
+import RepositoryList from '../../components/Repositories/RepositoryListContainer';
 
 describe('RepositoryList', () => {
     describe('RepositoryListContainer', () => {
@@ -48,7 +48,10 @@ describe('RepositoryList', () => {
                 ],
             };
 
-            render(<RepositoryList repositories={repositories} />);
+            // broken after additions from later exercises, requires useNavigate
+            render(
+                <RepositoryList repositories={repositories} />
+            );
 
             const repositoryInfos = screen.getAllByTestId('repositoryInfo');
             const repositoryStats = screen.getAllByTestId('repositoryStats');
