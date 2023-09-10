@@ -10,7 +10,6 @@ const useDeleteReview = () => {
     });
 
     const deleteReview = async (id) => {
-        console.log('deleting review', id);
         const { data } = await mutate({ variables: { id } });
         return data;
     };

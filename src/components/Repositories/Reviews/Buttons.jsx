@@ -4,14 +4,20 @@ import { Button } from "react-native-paper";
 import { useNavigate } from "react-router-native";
 import useDeleteReview from "../../../hooks/useDeleteReview";
 
-const Buttons = ({ reviewId, repositoryId, refetch }) => {
+const Buttons = ({ reviewId, repositoryId, refetch, style }) => {
     const navigate = useNavigate();
     const [deleteReview] = useDeleteReview();
+
     // replace / with .
     const newId = repositoryId.replace(/\//g, '.');
 
     const handleDelete = async () => {
         try {
+            const runDelete = async () => {
+                await deleteReview(reviewId);
+                refetch();
+            };
+
             Alert.alert("Delete review", "Are you sure you want to delete this review?", [
                 {
                     text: "Cancel",
@@ -20,21 +26,21 @@ const Buttons = ({ reviewId, repositoryId, refetch }) => {
                 },
                 {
                     text: "Delete",
-                    onPress: () => deleteReview(reviewId),
+                    onPress: () => runDelete(),
                     style: "destructive"
                 }
             ]);
-            refetch();
         } catch (error) {
             console.log(error);
         }
     };
 
     return (
-        <View style={{ flexDirection: "row", justifyContent: "space-evenly" }}>
+        <View style={{ flexDirection: "row" }}>
             <Button
                 mode="contained"
                 onPress={() => navigate(`/${newId}`)}
+                style={{ style }}
             >
                 View repository
             </Button>

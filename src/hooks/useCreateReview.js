@@ -15,9 +15,7 @@ const useCreateReview = () => {
             rating: Number(obj.rating),
             text: obj.review,
         }
-        console.log("review", review)
         const { data } = await mutate({ variables: { review } });
-        console.log("postreview data", data)
         return data;
     };
 

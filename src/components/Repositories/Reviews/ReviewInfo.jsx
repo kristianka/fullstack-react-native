@@ -6,7 +6,6 @@ const styles = StyleSheet.create({
     container: {
         padding: 10,
         backgroundColor: "white",
-        borderColor: "lightgray",
     },
     avatar: {
         width: 50,
@@ -40,6 +39,10 @@ const styles = StyleSheet.create({
         marginBottom: 5,
         fontWeight: "bold",
     },
+    button: {
+        marginTop: 10,
+        width: "20%",
+    },
 });
 
 
@@ -55,7 +58,7 @@ const ReviewInfo = ({ username, text, rating, date, repositoryName, reviewId, re
             </Text>
             <Text style={styles.description} fontSize="subheading">{date}</Text>
             <Text style={styles.description} fontSize="subheading">{text}</Text>
-            {repositoryName && <Buttons repositoryId={repositoryName} reviewId={reviewId} refetch={refetch} />}
+            {repositoryName && <Buttons style={styles.button} repositoryId={repositoryName} reviewId={reviewId} refetch={refetch} />}
         </View>
     );
 };

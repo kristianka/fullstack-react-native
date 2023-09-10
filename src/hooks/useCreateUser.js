@@ -10,7 +10,6 @@ const useCreateUser = () => {
     });
 
     const createUser = async ({ username, password }) => {
-        console.log('creating user with in with', username, password);
         const { data } = await mutate({ variables: { user: { username, password } } });
         return data;
     };

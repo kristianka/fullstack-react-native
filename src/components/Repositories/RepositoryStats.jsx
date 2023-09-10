@@ -7,7 +7,7 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         justifyContent: "space-around",
         flexShrink: 1,
-        width: "100%"
+        width: "50%"
     },
 });
 

@@ -15,7 +15,9 @@ export const CREATE_REVIEW = gql`
         username
       }
       repository {
-        name
+        name,
+        fullName,
+        ownerName,
       }
       rating,
       text

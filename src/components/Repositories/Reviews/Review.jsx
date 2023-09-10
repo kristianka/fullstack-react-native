@@ -9,9 +9,6 @@ const styles = StyleSheet.create({
         alignItems: "flex-start",
         padding: 10,
         backgroundColor: "white",
-        flexWrap: "wrap",
-        flexShrink: 1,
-        width: "5em",
     },
     textContainer: {
         position: "relative",

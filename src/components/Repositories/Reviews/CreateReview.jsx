@@ -35,13 +35,8 @@ const CreateReview = () => {
     const navigate = useNavigate();
 
     const handleFormSubmit = async (values) => {
-        try {
-            const data = await postReview(values);
-            console.log("data is ", data);
-            navigate(`/${data.createReview.user.username}.${data.createReview.repository.name}`);
-        } catch (e) {
-            console.log(e);
-        }
+        const data = await postReview(values);
+        navigate(`/${data.createReview.repository.ownerName}.${data.createReview.repository.name}`);
     };
 
     return (

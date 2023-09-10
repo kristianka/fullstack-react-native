@@ -24,6 +24,12 @@ const styles = StyleSheet.create({
         height: 50,
         borderRadius: 10,
         marginRight: 16,
+        padding: 10,
+    },
+    button: {
+        marginTop: 10,
+        width: "20%",
+        padding: 10,
     },
     textContainer: {
         position: "relative",
@@ -82,10 +88,10 @@ const Repository = () => {
                         reviews={reviewCount}
                         rating={ratingAverage}
                     />
-                    <Button title="Open in GitHub" onPress={handleClick}></Button>
                 </View>
             </View>
-            <View>
+            <View style={styles.button}>
+                <Button title="Open in GitHub" onPress={handleClick}></Button>
                 <Text></Text>
             </View>
             <FlatList
